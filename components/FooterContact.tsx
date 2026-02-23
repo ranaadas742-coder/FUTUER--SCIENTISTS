@@ -68,7 +68,7 @@ export const FooterContact: React.FC = () => {
               className="block rounded-2xl overflow-hidden shadow-2xl border-4 border-white/20 h-80 relative group"
             >
               <img 
-                src="images/map.jpg" 
+                src="https://images.unsplash.com/photo-1524661135-423995f22d0b?q=80&w=800" 
                 alt="خريطة الموقع" 
                 className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
               />
@@ -89,8 +89,15 @@ export const FooterContact: React.FC = () => {
           <div className="grid md:grid-cols-3 gap-8 mb-8">
             {/* Brand */}
             <div>
-              <div className="mb-6">
-                 <h3 className="text-2xl font-bold text-white mb-2">معهد علماء المستقبل</h3>
+              <div className="mb-6 flex items-center gap-3">
+                 <div className="bg-white p-2 rounded-lg w-16 h-16 flex items-center justify-center shrink-0">
+                    <img 
+                      src="https://cdn-icons-png.flaticon.com/512/2997/2997300.png" 
+                      alt="شعار المعهد" 
+                      className="w-full h-full object-contain"
+                    />
+                 </div>
+                 <h3 className="text-2xl font-bold text-white">معهد علماء المستقبل</h3>
               </div>
               <p className="mb-4 text-sm leading-relaxed">
                 نصنع مستقبلاً تعليمياً مشرقاً لأبنائنا من خلال بيئة تعليمية متميزة وكادر تدريسي محترف.

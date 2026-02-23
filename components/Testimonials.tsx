@@ -3,6 +3,9 @@ import { Section } from './Section';
 import { Quote } from 'lucide-react';
 import { motion } from 'framer-motion';
 
+// Cast to any to avoid TS errors with current framer-motion version
+const MotionDiv = motion.div as any;
+
 const testimonials = [
   {
     text: "أفضل معهد ساعدني على التفوق الدراسي والحصول على العلامة التامة في الرياضيات.",
@@ -26,7 +29,7 @@ export const Testimonials: React.FC = () => {
     <Section id="testimonials" title="آراء طلابنا وأولياء الأمور" lightBg>
       <div className="grid md:grid-cols-3 gap-8">
         {testimonials.map((item, idx) => (
-          <motion.div 
+          <MotionDiv 
             key={idx}
             whileHover={{ y: -10 }}
             className="bg-white p-8 rounded-2xl shadow-lg relative border border-gray-100"
@@ -44,7 +47,7 @@ export const Testimonials: React.FC = () => {
                 <p className="text-xs text-secondary font-medium">{item.role}</p>
               </div>
             </div>
-          </motion.div>
+          </MotionDiv>
         ))}
       </div>
     </Section>

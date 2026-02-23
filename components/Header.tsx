@@ -2,6 +2,9 @@ import React, { useState, useEffect } from 'react';
 import { Menu, X, Phone, MapPin } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 
+// Cast to any to avoid TS errors with current framer-motion version
+const MotionDiv = motion.div as any;
+
 interface HeaderProps {
   currentPage: string;
   onNavigate: (page: string) => void;
@@ -24,23 +27,11 @@ export const Header: React.FC<HeaderProps> = ({ currentPage, onNavigate }) => {
     { name: 'من نحن', id: 'about' },
     { name: 'خدماتنا', id: 'services' },
     { name: 'الدورات', id: 'courses' },
-    { name: 'المرافق', id: 'facilities' },
     { name: 'تواصل معنا', id: 'contact' },
   ];
 
   return (
     <>
-      {/* Top Bar */}
-      <div className="bg-secondary text-white py-2 px-4 text-center text-sm md:text-base font-medium z-50 relative">
-        <motion.div 
-          initial={{ opacity: 0, y: -20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5 }}
-        >
-          خصم 50% للمسجلين ليوم الإعلان فقط – المقاعد محدودة
-        </motion.div>
-      </div>
-
       {/* Navbar */}
       <header 
         className={`sticky top-0 left-0 right-0 z-40 transition-all duration-300 ${
@@ -54,12 +45,9 @@ export const Header: React.FC<HeaderProps> = ({ currentPage, onNavigate }) => {
             className="flex items-center gap-3 group text-right"
           >
             <img 
-              src="images/logo.png" 
+              src="https://cdn-icons-png.flaticon.com/512/2997/2997300.png" 
               alt="شعار معهد علماء المستقبل" 
               className="h-12 w-auto object-contain transition-transform group-hover:scale-105"
-              onError={(e) => {
-                e.currentTarget.style.display = 'none'; 
-              }}
             />
             <div className="flex flex-col items-start">
               <span className="text-xl md:text-2xl font-bold text-secondary group-hover:text-primary transition-colors">معهد علماء المستقبل</span>
@@ -106,7 +94,7 @@ export const Header: React.FC<HeaderProps> = ({ currentPage, onNavigate }) => {
         {/* Mobile Menu */}
         <AnimatePresence>
           {isMobileMenuOpen && (
-            <motion.div
+            <MotionDiv
               initial={{ height: 0, opacity: 0 }}
               animate={{ height: 'auto', opacity: 1 }}
               exit={{ height: 0, opacity: 0 }}
@@ -134,7 +122,7 @@ export const Header: React.FC<HeaderProps> = ({ currentPage, onNavigate }) => {
                    <p className="text-sm text-gray-500 mb-2 flex items-center gap-2"><MapPin size={16}/> المرديان – مقابل جسر الإنشاءات العسكرية</p>
                 </div>
               </nav>
-            </motion.div>
+            </MotionDiv>
           )}
         </AnimatePresence>
       </header>

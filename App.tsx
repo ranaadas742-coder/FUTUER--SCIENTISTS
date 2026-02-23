@@ -49,13 +49,6 @@ function App() {
            </div>
         )}
 
-        {/* صفحة المرافق */}
-        {currentPage === 'facilities' && (
-           <div className="pt-8 animate-fade-in">
-             <Features view="facilities" />
-           </div>
-        )}
-
         {/* صفحة تواصل معنا - تترك المحتوى فارغاً ليظهر الفوتر مباشرة في الأعلى */}
         {currentPage === 'contact' && (
            <div className="hidden"></div>

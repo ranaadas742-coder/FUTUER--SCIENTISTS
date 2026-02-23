@@ -1,6 +1,10 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 
+// Cast to any to avoid TS errors with current framer-motion version
+const MotionH2 = motion.h2 as any;
+const MotionP = motion.p as any;
+
 interface SectionProps {
   id?: string;
   className?: string;
@@ -27,7 +31,7 @@ export const Section: React.FC<SectionProps> = ({
         {(title || subtitle) && (
           <div className="text-center mb-12 md:mb-16">
             {title && (
-              <motion.h2 
+              <MotionH2 
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
@@ -36,10 +40,10 @@ export const Section: React.FC<SectionProps> = ({
               >
                 {title}
                 <span className="absolute bottom-[-10px] left-1/2 transform -translate-x-1/2 w-20 h-1 bg-secondary rounded-full"></span>
-              </motion.h2>
+              </MotionH2>
             )}
             {subtitle && (
-              <motion.p 
+              <MotionP 
                 initial={{ opacity: 0 }}
                 whileInView={{ opacity: 1 }}
                 viewport={{ once: true }}
@@ -47,7 +51,7 @@ export const Section: React.FC<SectionProps> = ({
                 className="text-gray-600 max-w-2xl mx-auto text-lg mt-4"
               >
                 {subtitle}
-              </motion.p>
+              </MotionP>
             )}
           </div>
         )}
